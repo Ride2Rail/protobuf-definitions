@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package categorizer;
+
+// The categprozation service definition.
+service Categorizer {
+  // Sends a greeting
+  rpc Categorize (CategorizationRequest) returns (CategorizationResponse) {}
+}
+
+// The request message containing TRIAS offers.
+message CategorizationRequest {
+  string offers = 1;
+}
+
+// The response message containing the categorization
+message CategorizationResponse {
+  message Categorization {
+  	map<string, double> categories = 1;
+  }
+
+  map<string, Categorization > categorization = 1;
+}
